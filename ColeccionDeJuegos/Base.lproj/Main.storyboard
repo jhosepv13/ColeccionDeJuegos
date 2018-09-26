@@ -36,7 +36,7 @@
                     <navigationItem key="navigationItem" id="6kk-sq-lxS">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Ns0-0u-awz">
                             <connections>
-                                <segue destination="KzZ-mm-vrb" kind="show" id="Bli-2J-ihV"/>
+                                <segue destination="KzZ-mm-vrb" kind="show" identifier="juegoSegue" id="Bli-2J-ihV"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -56,33 +56,44 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hp8-7V-ypc">
-                                <rect key="frame" x="47" y="84" width="280" height="150"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hp8-7V-ypc">
+                                <rect key="frame" x="47" y="84" width="281" height="226"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="150" id="6Pv-Ak-YvZ"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="281" id="Aoc-Bu-vKX"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="226" id="BbB-hp-3Xl"/>
                                     <constraint firstAttribute="width" constant="280" id="hWt-1v-EEf"/>
                                 </constraints>
                             </imageView>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Titulo" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FHP-Pb-V5k">
-                                <rect key="frame" x="47.5" y="278" width="280" height="30"/>
+                            <textField opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Titulo" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FHP-Pb-V5k">
+                                <rect key="frame" x="48" y="330" width="280" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KLf-J2-0kx">
-                                <rect key="frame" x="160" y="328" width="55" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KLf-J2-0kx">
+                                <rect key="frame" x="161" y="380" width="55" height="30"/>
                                 <state key="normal" title="Agregar"/>
                                 <connections>
                                     <action selector="agregarTapped:" destination="KzZ-mm-vrb" eventType="touchUpInside" id="UdK-SC-6fW"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cJz-19-SO7">
+                                <rect key="frame" x="161" y="418" width="55" height="30"/>
+                                <state key="normal" title="Eliminar"/>
+                                <connections>
+                                    <action selector="eliminarTapped:" destination="KzZ-mm-vrb" eventType="touchUpInside" id="1gD-oy-K2o"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="FHP-Pb-V5k" firstAttribute="top" secondItem="hp8-7V-ypc" secondAttribute="bottom" constant="20" id="4ne-Vb-M1Q"/>
+                            <constraint firstItem="cJz-19-SO7" firstAttribute="centerX" secondItem="ROb-qw-iWF" secondAttribute="centerX" id="62Z-rk-R7N"/>
                             <constraint firstItem="hp8-7V-ypc" firstAttribute="centerX" secondItem="ROb-qw-iWF" secondAttribute="centerX" id="FOg-ZX-xUM"/>
                             <constraint firstItem="hp8-7V-ypc" firstAttribute="top" secondItem="Uko-kz-ub1" secondAttribute="top" constant="20" id="PtC-Qz-bxW"/>
                             <constraint firstItem="FHP-Pb-V5k" firstAttribute="top" secondItem="hp8-7V-ypc" secondAttribute="bottom" constant="44" id="RYe-05-lh6"/>
+                            <constraint firstItem="cJz-19-SO7" firstAttribute="top" secondItem="KLf-J2-0kx" secondAttribute="bottom" constant="8" id="Vf7-Mz-0Rq"/>
                             <constraint firstItem="KLf-J2-0kx" firstAttribute="top" secondItem="FHP-Pb-V5k" secondAttribute="bottom" constant="51" id="ZLn-bg-0q5"/>
                             <constraint firstItem="KLf-J2-0kx" firstAttribute="top" secondItem="FHP-Pb-V5k" secondAttribute="bottom" constant="20" id="aoP-Km-EIB"/>
                             <constraint firstItem="KLf-J2-0kx" firstAttribute="centerX" secondItem="ROb-qw-iWF" secondAttribute="centerX" id="dCF-TS-7Wt"/>
@@ -107,6 +118,8 @@
                     </navigationItem>
                     <connections>
                         <outlet property="JuegoImageView" destination="hp8-7V-ypc" id="QK5-62-6f6"/>
+                        <outlet property="agregarActualizarBoton" destination="KLf-J2-0kx" id="j7h-rH-ljT"/>
+                        <outlet property="eliminarBoton" destination="cJz-19-SO7" id="BzS-ec-bci"/>
                         <outlet property="tituloTextField" destination="FHP-Pb-V5k" id="R7E-w7-HOZ"/>
                     </connections>
                 </viewController>
